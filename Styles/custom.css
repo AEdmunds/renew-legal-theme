@@ -1,0 +1,171 @@
+/*
+Enter Here your Custom CSS Style!!
+*/
+
+header #logo a {
+    display: inline;
+    background: none;
+} 
+
+header #logo a img {
+    max-height: 45px
+}
+
+#home-slider .overlay {
+    opacity: 0;
+}
+
+#home-slider #slidecaption {
+    color: #535252;
+}
+
+.fancybox-title-inside-wrap {
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: white;
+    opacity: 0.9;
+}   
+
+
+.item-thumbs .hover-wrap .overlay-text-thumb {
+    position: absolute;
+    width: 100%;
+    height: 32px;
+    top: 85%;
+    margin: -16px 0 0 0;
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 32px;
+    text-transform: uppercase;
+    text-align: center;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+
+/* ==================================================
+   Icons Example
+================================================== */
+
+.icons-example ul {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.icons-example ul li {
+	display: inline-block;
+	margin: 15px;
+	list-style: none;
+	cursor: pointer;
+}
+
+.icons-example ul li a {
+	display: block;
+	width: 70px;
+	height: 70px;
+
+	background: transparent;
+	
+	-webkit-transition: all 400ms ease-out 0s;	
+	   -moz-transition: all 400ms ease-out 0s;
+		 -o-transition: all 400ms ease-out 0s;
+		    transition: all 400ms ease-out 0s;
+		  
+	-webkit-transform: rotateY(0deg);
+	   -moz-transform: rotateY(0deg);
+		-ms-transform: rotateY(0deg);
+		 -o-transform: rotateY(0deg);
+			transform: rotateY(0deg);	
+}
+
+span#fancybox-arrow {
+	display: inline-block;
+    margin: 0;
+    color: #F7F9FA;
+    background-color: rgb(38, 41, 46);
+    opacity: 0.3;
+    font-size: 30px;
+    line-height: 1em;
+    margin-left: 20px;
+    filter: alpha(opacity=30);
+    padding: 8px;
+}
+
+
+a:hover span#fancybox-arrow,
+a.active span#fancybox-arrow {
+    color: #FFFFFF;
+    background-color: #FF8C53;
+	opacity: 1;
+	filter: alpha(opacity=100);
+	
+}
+
+.linked-in-wrapper {
+    
+}
+
+span#linked-in {
+    color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+   background-color: #60a9ce;
+      *background-color: #4393bb;
+      background-image: -moz-linear-gradient(top, #73b8db, #4393bb);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#73b8db), to(#4393bb));
+      background-image: -webkit-linear-gradient(top, #73b8db, #4393bb);
+      background-image: -o-linear-gradient(top, #73b8db, #4393bb);
+      background-image: linear-gradient(to bottom, #73b8db, #4393bb);
+      background-repeat: repeat-x;
+      border-color: #4393bb #4393bb #2f6783;
+      border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff73b8db', endColorstr='#ff4393bb', GradientType=0);
+      filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+      display: inline-block;
+  display: inline-block;
+    margin: 0;
+    font-size: 30px;
+    padding: 8px 10px;
+    margin-left: 20px;
+    line-height: 1em;
+    
+}
+
+
+a.active span#linked-in {
+    background-color: #367595 \9;
+}
+
+a:hover span#linked-in {
+    color: #ffffff;
+    background-color: #4393bb;
+    *background-color: #3c84a8;
+}
+
+/*
+.btn-linkedin {
+  
+
+    font-size: 20px;
+    line-height: 1em;
+    margin-left: 20px;
+    border-radius: 0;
+    padding: 8px;
+}
+
+.btn-linkedin:hover,
+.btn-linkedin:focus,
+.btn-linkedin:active,
+.btn-linkedin.active,
+.btn-linkedin.disabled,
+.btn-linkedin[disabled] {
+ 
+}
+
+.btn-linkedin:active,
+.btn-linkedin.active {
+  background-color: #367595 \9;
+}
+
+    */

@@ -1,0 +1,45 @@
+﻿@using Chakra.Utils
+@using Orchard.DisplayManagement.Shapes
+@using Orchard.Utility.Extensions;
+@{
+    if (Model.Title != null) {
+        Layout.Title = Model.Title;
+    }
+
+    Model.Classes.Add("content-item");
+    Model.Classes.Add("row");
+    
+    var contentTypeClassName = ((string)Model.ContentItem.ContentType).HtmlClassify();
+    Model.Classes.Add(contentTypeClassName);
+    
+    var tag = Tag(Model, "div");
+
+    // get the content items 
+    var contentItems = (IList<dynamic>)Enumerable.Cast<dynamic>(Model.Content.Items);
+    var projectionList = contentItems.First(x => x.Metadata.Type == "List");
+    IList<dynamic> projects = projectionList.Items;
+
+    WorkContext.Layout.BeforeMain.Add(
+        New.PageHeader(
+           Title: @Model.ContentItem.TitlePart.Title,
+           ShortDescripiton: Model.ContentItem.HeaderPart.ShortDescription.Value    
+        )
+        , "1"
+    );
+
+}
+
+<div class="row">
+    <div class="span12">
+        <div class="row">
+            <section id="projects">
+                <ul id="thumbs">
+                    @foreach (dynamic project in projects) {
+                       @Display(project)
+                    }
+                </ul>
+            </section>
+        </div>
+    </div>
+</div>
+

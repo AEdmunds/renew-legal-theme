@@ -1,0 +1,5 @@
+C:\Dev\Orchard\RenewLegal\build\Compile\Chakra.dll
+C:\Dev\Orchard\RenewLegal\build\Compile\Chakra.pdb
+C:\Dev\Orchard\RenewLegal\src\Orchard.Web\Themes\Chakra\obj\Release\Chakra.csprojResolveAssemblyReference.cache
+C:\Dev\Orchard\RenewLegal\src\Orchard.Web\Themes\Chakra\obj\Release\Chakra.dll
+C:\Dev\Orchard\RenewLegal\src\Orchard.Web\Themes\Chakra\obj\Release\Chakra.pdb

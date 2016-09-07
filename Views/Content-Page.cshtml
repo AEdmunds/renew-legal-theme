@@ -1,0 +1,19 @@
+﻿@using Orchard.Utility.Extensions;
+@{
+    if (Model.Title != null) {
+        Layout.Title = Model.Title;
+    }
+    
+    WorkContext.Layout.BeforeMain.Add(
+       New.PageHeader(
+           Title: Model.ContentItem.TitlePart.Title,
+           Standfirst: Model.ContentItem.HeaderPart.Standfirst.Value,
+           ShortDescripiton: Model.ContentItem.HeaderPart.ShortDescription.Value    
+       )
+       , "1"
+   );
+    
+    
+}
+
+@Html.Raw(Model.ContentItem.BodyPart.Text)

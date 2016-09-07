@@ -1,0 +1,52 @@
+﻿@using System.Text
+@using Orchard.MediaLibrary.Fields
+@{
+
+    // get media files
+    var mediaFields = (MediaLibraryPickerField)Model.ContentItem.ImageCarouselPart.Images;
+
+    // lazy load parts 
+    var images = mediaFields.MediaParts.ToArray();
+   
+    // include script  file for slider 
+    Script.Require("slider");
+       
+}
+
+<script type="text/javascript">
+
+    var jsonImageArray = new Array();
+    @foreach (var image in images) {
+        @:jsonImageArray.push({ image: '@image.MediaUrl', title: '<div class="slide-content"></div>', thumb: '', url: '' })
+    }
+
+</script>
+
+
+
+<!-- Homepage Slider -->
+<div id="home-slider" class="hidden-phone">	
+    <div class="overlay"></div>
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="slider-text">
+                    <div id="slidecaption"></div>
+                </div>
+            </div>
+        </div>
+    </div>   
+	
+    <div class="control-nav">
+        <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
+        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
+        <ul id="slide-list"></ul>
+        <a id="nextsection" href="#OurRenewablesWorld"><i class="font-icon-arrow-simple-down"></i></a>
+    </div>
+</div>
+<!-- End Homepage Slider -->
+
+
+
+  

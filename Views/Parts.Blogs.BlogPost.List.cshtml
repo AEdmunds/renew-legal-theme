@@ -1,0 +1,27 @@
+﻿@{
+    IEnumerable<object> blogPosts = Model.ContentItems;
+    Model.ContentItems.Classes.Add("content-items");
+    Model.ContentItems.Classes.Add("blog-posts");
+}
+<!-- Blog Section -->
+<div id="blog" class="page-alternate">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+
+
+                @foreach (var blogPost in blogPosts) {
+     
+                    @Display(blogPost)
+                }
+
+
+
+                @if (blogPosts == null || blogPosts.Count() < 1) {
+                    <p>@T("There are no posts for this blog.")</p>
+                }
+                
+            </div>
+        </div>
+    </div>  
+</div>

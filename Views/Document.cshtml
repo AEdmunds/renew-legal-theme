@@ -1,0 +1,35 @@
+﻿@using Orchard.Mvc.Html;
+@using Orchard.UI.Resources;
+@{
+    RegisterLink(new LinkEntry {Type = "image/x-icon", Rel = "shortcut icon", Href = Url.Content(@"~/themes/Chakra/Content/img/favicon.ico")});
+    //Script.Include("html5.js").UseCondition("lt IE 9").AtHead();
+
+    string title = Convert.ToString(Model.Title);
+    string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
+}
+
+    <!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if (IE 9)]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html lang="@WorkContext.CurrentCulture"> <!--<![endif]--> 
+    <head> 
+        <meta charset="utf-8" />
+        <title>@Html.Title(title, siteName)</title>
+        
+        <!-- Mobile Internet Explorer ClearType Technology -->
+        <!--[if IEMobile]>  
+            <meta http-equiv="cleartype" content="on">  
+        <![endif]-->
+    
+         
+        @Display(Model.Head)
+        <script>        (function (d) { d.className = "dyn" + d.className.substring(6, d.className.length); })(document.documentElement);</script> 
+    </head> 
+    <body>
+        @* Layout (template) is in the Body zone @ the default position (nothing, zero, zilch) *@
+        @Display(Model.Body)
+        @Display(Model.Tail)
+    </body>
+</html>

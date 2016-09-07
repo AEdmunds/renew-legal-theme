@@ -1,0 +1,65 @@
+﻿@using Orchard.ContentManagement
+@using Orchard.MediaLibrary.Fields
+@using Orchard.Widgets.Models
+@{
+
+    var widgetPart = ((IContent)Model.ContentItem).As<WidgetPart>();
+    
+    // project category filter widget. 
+
+    var contentItems = (IList<dynamic>)Enumerable.Cast<dynamic>(Model.Content.Items);
+    var projectionList = contentItems.First(x => x.Metadata.Type == "List");
+
+    IList<dynamic> items = projectionList.Items;
+
+   
+     
+} 
+
+@if (widgetPart.Zone == "BeforeContent") {
+    <!-- Portfolio Projects -->
+    <div class="row">
+        <div class="span12">
+            <!-- Filter -->
+            <nav id="options" class="work-nav">
+                <ul id="filters" class="option-set" data-option-key="filter">
+                    <li><a href="#filter" data-option-value="*" class="selected">@Model.ContentItem.WidgetPart.Title</a></li>
+                    @foreach (dynamic category in items)
+                    {
+                        var termName = (string) category.ContentItem.TitlePart.Title.ToUpper();
+                        var termValue = string.Format(".{0}", termName.ToLower().Replace(" ", "-"));
+
+                        <li><a href="#filter" data-option-value="@termValue">@termName</a></li>
+                    }
+                </ul>
+            </nav>
+            <!-- End Filter -->
+        </div>
+    </div>
+}
+else if (widgetPart.Zone == "AfterMain" && widgetPart.Title == "Clients") {
+    
+    <div id="clients" class="page">
+        <div class="container">
+            <div class="row">
+                @foreach (dynamic client in items)
+                {
+                    var imageField = (MediaLibraryPickerField)client.ContentItem.Client.Logo;
+                    var mediaParts = imageField.MediaParts;
+                    var image = mediaParts.FirstOrDefault();
+                    
+                    <div class="span3">
+                        <img width="141" height="97" src="@image.MediaUrl" />
+                    </div>    
+                }
+            </div>
+        </div>
+    </div>
+}
+
+else {
+    @Display(Model)
+}
+
+
+   

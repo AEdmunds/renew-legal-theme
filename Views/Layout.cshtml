@@ -1,0 +1,115 @@
+﻿@{
+    /* Global includes for the theme
+    ***************************************************************/
+
+    <!-- Meta Tags -->
+
+    SetMeta(httpEquiv: "Content-Type", content: "text/html; charset=UFT-8");
+
+    SetMeta(name:"descripiton", content:"");
+    SetMeta(name: "viewport", content: "width=device-width, initial-scale=1.0");
+    SetMeta(name: "HandheldFriendly", content: "true");
+    SetMeta(name: "MobileOptimized", content: "320");
+
+    Style.Require("bootstrap");
+    Style.Require("main");
+    Style.Require("supersized");
+    Style.Require("fancybox");
+    Style.Require("fonts");
+    Style.Require("shortcodes");
+    Style.Require("bootstrap-responsive");
+    Style.Require("responsive");
+    Style.Require("shutter");
+    Style.Require("custom");
+    Style.Require("google-fonts");
+   
+
+    Script.Require("modernizr").AtHead();
+    
+    Script.Require("jQuery");
+    Script.Include("https://maps.googleapis.com/maps/api/js?key=AIzaSyDaIDUFt6HNJ8uNL8_Rr7USTkvR4dyJojU");
+    Script.Require("bootstrap");
+    //Script.Require("supersized");
+    Script.Require("waypoints");
+    Script.Require("waypoints-sticky");
+    Script.Require("isotope");
+    Script.Require("fancybox-pack");
+    Script.Require("fancybox-media");
+    //Script.Require("tweet");
+    Script.Require("plugins");
+    Script.Require("main");
+    
+    /* Some useful shortcuts or settings
+    ***************************************************************/
+
+    Func<dynamic, dynamic> Zone = x => Display(x); // Zone as an alias for Display to help make it obvious when we're displaying zones
+
+    WorkContext.Layout.Header.Add(New.Branding(), "5"); // Site name and link to the home page
+    
+    
+}
+
+ <!-- This section is for Splash Screen -->
+  @*  <div class="ole">
+        <section id="jSplash">
+	        <div id="circle"></div>
+        </section>
+    </div>*@
+<!-- End of Splash Screen -->
+
+@if (Model.Featured != null)
+{
+     @Zone(Model.Featured)
+}
+
+
+@if (Model.Header != null) {
+     <!-- Header -->
+        <header>
+            <div class="sticky-nav">
+    	        <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+        
+                @Zone(Model.Header)
+
+                @if (Model.Navigation != null) {
+                    @Zone(Model.Navigation)
+                }
+            </div>
+        </header>
+    <!-- End Header -->       
+}
+
+@if (Model.Content != null) {    
+    
+        if (Model.BeforeMain != null) {
+            @Zone(Model.BeforeMain)
+        }
+            
+        if (Model.BeforeContent != null) {
+            @Zone(Model.BeforeContent)
+        }
+          
+        @Zone(Model.Content)
+        
+        if (Model.AfterContent != null)
+        {
+            @Zone(Model.AfterContent)
+        }
+    
+        if (Model.AfterMain != null) {
+            @Zone(Model.AfterMain)
+        }
+}
+
+
+<!-- Footer -->
+<footer>
+	<p class="credits">Registered in England & Wales: Company Number 8056621​ | Authorised and regulated by the Solicitors Regulation Authority</p>
+</footer>
+<!-- End Footer -->
+
+<!-- Back To Top -->
+<a id="back-to-top" href="#">
+	<i class="font-icon-arrow-simple-up"></i>
+</a>
+<!-- End Back to Top -->

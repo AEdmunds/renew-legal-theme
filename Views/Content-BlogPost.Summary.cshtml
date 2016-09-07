@@ -1,0 +1,59 @@
+﻿@using Orchard.Utility.Extensions;
+@{
+    if (Model.Title != null) {
+        Layout.Title = Model.Title;
+    }
+
+    Model.Classes.Add("content-item");
+    Model.Classes.Add("post");
+    
+    var contentTypeClassName = ((string)Model.ContentItem.ContentType).HtmlClassify();
+    Model.Classes.Add(contentTypeClassName);
+    
+    var tag = Tag(Model, "article");
+
+    var dateCreated = string.Format("{0:dd MMMM, yyyy}", ((DateTime)Model.ContentItem.CommonPart.CreatedUtc));
+
+    string bodyHtml = Model.ContentItem.BodyPart.Text.ToString();
+    var body = new HtmlString(Html.Excerpt(bodyHtml, 200).ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+    
+}
+@tag.StartElement
+    <h2 class="entry-title">
+        <a href="@Model.ContentItem.AutoroutePart.Path">@Model.ContentItem.BlogPostPart.Title</a>
+    </h2>
+    <div class="entry-meta">
+      @*  <span class="author"></span>
+        <span class="divider">/</span>*@
+        <span class="published">@dateCreated</span>
+        @*<span class="divider">/</span>  @Model.ContentItem.CommonPart.CreatedUtc - convert data time
+        <span class="comment-count">
+        <a href="blog-details.html">4 Comments</a>
+        </span>*@
+    </div>
+                    
+    <div class="entry-content">
+        @body
+        <p>
+            <a class="more-link" href="@Model.ContentItem.AutoroutePart.Path">Continue Reading...</a>
+        </p> 
+    </div>                  
+            
+
+
+
+@*    <header>
+        @Display(Model.Header)
+        @if (Model.Meta != null) {
+            <div class="metadata">
+                @Display(Model.Meta)
+            </div>
+        }
+    </header>
+    @Display(Model.Content)
+    @if(Model.Footer != null) {
+        <footer>
+            @Display(Model.Footer)
+        </footer>
+    }*@
+@tag.EndElement

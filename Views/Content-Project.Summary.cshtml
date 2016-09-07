@@ -1,0 +1,63 @@
+﻿@using Orchard.ContentManagement
+@using Orchard.MediaLibrary.Fields
+@{
+    //var contentManager = new ()
+
+    var imageField = (MediaLibraryPickerField) Model.ContentItem.Project.Image;
+    var mediaParts = imageField.MediaParts;
+    var image = mediaParts.FirstOrDefault();
+
+    var thumbImageField = (MediaLibraryPickerField)Model.ContentItem.Project.Thumbnail;
+    var thumbMediaParts = thumbImageField.MediaParts;
+    var thumbImage = thumbMediaParts.FirstOrDefault();
+
+    var caption = Model.ContentItem.Project.Caption == null 
+        ? ""
+        : Model.ContentItem.Project.Caption.Value;
+
+    var linkedInProfile = Model.ContentItem.Project.LinkedInUrl == null
+        ? ""
+        : Model.ContentItem.Project.LinkedInUrl.Value;    
+
+    var title = @Model.ContentItem.TitlePart.Title;
+}
+
+@if (image != null && thumbImage != null) 
+{
+
+    var imagePath = image.MediaUrl;
+    var thumbPath = thumbImage.MediaUrl;
+    var thumbAlt = thumbImage.AlternateText;
+    var imageAlt = image.AlternateText;
+    
+    
+    Model.Classes.Add("item-thumbs");
+    Model.Classes.Add("span3");
+
+
+    // add temrs from project category as class so we can filter them 
+    var termParts = Model.ContentItem.Project.Category.Terms;
+
+    foreach (var termPart in termParts) {
+        Model.Classes.Add(((string) termPart.Name).ToLower().Replace(" ", "-"));
+    }
+
+    var tag = Tag(Model, "li");
+
+    @tag.StartElement
+
+    <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+    <a class="hover-wrap fancybox" data-fancybox-group="gallery" title="@title" href="@imagePath">
+        <span class="overlay-img"></span>
+        <span class="overlay-img-thumb font-icon-search"></span>
+        <span class="overlay-text-thumb">@caption</span>
+
+    </a>
+    <!-- Thumb Image and Description -->
+    <img src="@thumbPath"  alt="@Model.ContentItem.Project.Description.Value" />
+    <input type="hidden" id="linked-in" value="@linkedInProfile"/>
+
+    @tag.EndElement
+
+    
+}
